@@ -25,6 +25,15 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
+.dark-theme-variables{
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --color-dark-variant: #a3bdcc;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -71,18 +80,22 @@ img{
 h1{
     font-weight: 800;
     font-size: 1.8rem;
+    color: var(--color-dark);
 }
 
 h2{
     font-size: 1.4rem;
+    color: var(--color-dark);
 }
 
 h3{
     font-size: 0.87rem;
+    color: var(--color-dark);
 }
 
 h4{
     font-size: 0.8rem;
+    color: var(--color-dark);
 }
 
 small{
@@ -424,7 +437,7 @@ main table td {
 
 /* menu style */
 
-.left .menu{
+.menu{
     display: flex;
     justify-content: flex-end
 }
@@ -440,7 +453,7 @@ main table td {
     overflow: hidden;
 }
 
-.left .menu .switch-mode span {
+.switch-mode span {
     color: var(--color-dark);
     width: 50%;
     height: 100%;
@@ -448,15 +461,16 @@ main table td {
     align-items:center;
     justify-content: center;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
-.left .menu .switch-mode span.active{
+.switch-mode span.active{
     background: var(--color-primary);
     color: var(--color-white);
     border-radius: var(--border-radius-1);
 }
 
-.left .menu .user img{
+.user img{
     width: 47px;
     height: 47px;
     border-radius: 50%;
@@ -464,20 +478,20 @@ main table td {
     margin-left: 1rem;
 }
 
-.left .menu .user {
+.user {
     display: flex;
     align-items: center;
 }
 
-.left .menu .user .admin{
+.user .admin{
     text-align: end
 }
 
-.left .menu .user .text-user-name{
+.user .text-user-name{
     color: var(--color-dark-variant);
 }
 
-.left .menu .user .text-user-name span{
+.user .text-user-name span{
     font-weight: bold;
     color: var(--color-dark)
 }
@@ -494,6 +508,10 @@ main table td {
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+}
+
+.left .box-card:hover{
+    box-shadow: none;
 }
 
 .left .box-card span{
@@ -544,6 +562,12 @@ main table td {
     color: var(--color-primary);
 }
 
+/* menu top */
+
+.menu-top{
+    display: none;
+}
+
 
 @media screen and (max-width: 1200px) {
    .container{
@@ -573,24 +597,27 @@ main table td {
 @media screen and (max-width: 768px) {
     .container{
         width: 100%;
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
     aside {
         position: fixed;
         left: -100%;
         background: var(--color-white);
         width: 18rem;
-        z-index: 3;
+        z-index: 100;
         box-shadow: 1rem 3rem 4rem var(--color-light);
         height: 100vh;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
     }
+    aside.aside_show{
+        display: block;
+    }
     @keyframes showMenu {
         to{
             left: 0
-        }
+        } 
     }
     aside .sidebar h3{
         display: inline
@@ -610,11 +637,69 @@ main table td {
         display: inline
     }
     main {
-        margin-top: 8rem;
+        margin-top: 6rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
     }
     main .insights {
         grid-template-columns: 1fr;
         gap: 0
+    }
+
+    /* left menu */
+    .left .menu{
+        display: none;
+    }
+
+    .left {
+        margin: 0 1rem 5rem 1rem;
+    }
+
+    /* menu top */
+
+    .menu-top{
+        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.2rem;
+        position: fixed;
+        width: 100%;
+        box-shadow: var(--box-shadow);
+        background-color: var(--color-white);
+        z-index: 10;
+    }
+
+    .menu-top-child{
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-top-child .switch-mode-top{
+        background: var(--color-info-light);
+        width: 4.2rem;
+        height: 1.8rem;
+        display: flex;
+        justify-content:space-between;
+        border-radius: var(--border-radius-1);
+        overflow: hidden;
+    }
+
+    .menu-top-child .switch-mode-top span {
+        color: var(--color-dark);
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .menu-top-child .switch-mode-top span.active{
+        background: var(--color-primary);
+        color: var(--color-white);
+        border-radius: var(--border-radius-1);
     }
  }
 

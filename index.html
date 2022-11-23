@@ -14,14 +14,14 @@
 
 <body>
     <div class="container">
-        <aside>
+        <aside id="aside-bar">
             <div class="top">
                 <div class="logo">
                     <!-- <img src="" alt=""> -->
                     <h2 class="text-muted">EGA<span class="danger">TOR</span></h2>
                 </div>
                 <div class="close" id="close_btn">
-                    <span class="material-symbols-sharp">
+                    <span id="close-tap" class="material-symbols-sharp">
                         close
                     </span>
                 </div>
@@ -90,6 +90,30 @@
                 </a>
             </div>
         </aside>
+        <div class="menu-top">
+            <span id="touch-open" class="material-symbols-sharp">
+                menu
+            </span>
+            <div class="menu-top-child">
+                <div class="switch-mode-top">
+                    <span class="material-symbols-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-symbols-sharp">
+                        dark_mode
+                    </span>
+                </div>
+                <div class="user">
+                    <!-- <div class="boxtext">
+                        <div class="text-user-name">
+                            Hey <span>Sandra</span>
+                        </div>
+                        <div class="admin">Admin</div>
+                    </div> -->
+                    <img src="./assets/img1.jpg" alt="img-avatar" />
+                </div>
+            </div>
+        </div>
         <main>
             <h1>Dasboard</h1>
             <div class="date">
@@ -315,6 +339,32 @@
             </div>
         </div>
     </div>
+    <script>
+        const touchOpen = document.getElementById("touch-open")
+        const touchClose = document.getElementById("close-tap")
+        const element = document.getElementById("aside-bar");
+        touchOpen.addEventListener("click", function() {
+            element.classList.add("aside_show");
+        });
+        touchClose.addEventListener("click", function() {
+            element.classList.remove("aside_show");
+        });
+
+        const themeToggler = document.querySelector(".switch-mode-top")
+        themeToggler.addEventListener('click', () =>{
+            document.body.classList.toggle('dark-theme-variables')
+            themeToggler.querySelector('span:nth-child(1)').classList.toggle('active')
+            themeToggler.querySelector('span:nth-child(2)').classList.toggle('active')
+        })
+
+        const themeToggler2 = document.querySelector(".switch-mode")
+        themeToggler2.addEventListener('click', () =>{
+            document.body.classList.toggle('dark-theme-variables')
+            themeToggler2.querySelector('span:nth-child(1)').classList.toggle('active')
+            themeToggler2.querySelector('span:nth-child(2)').classList.toggle('active')
+        })
+
+    </script>
 </body>
 
 </html>
